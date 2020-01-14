@@ -51,7 +51,6 @@ h2 {
 }
 
 .lista-productos {
-    margin-top: 40px;
     padding: 0;
     list-style: none;
 }
@@ -63,9 +62,19 @@ h2 {
     text-align: center;
 }
 
+.lista-productos li:nth-child(2n+1) {
+    clear: both;
+}
+
 @media (min-width:768px) {
     .lista-productos li {
         width: 33.3%;
+    }
+    .lista-productos li:nth-child(2n+1) {
+        clear: unset;
+    }
+    .lista-productos li:nth-child(3n+1) {
+        clear: both;
     }
 }
 
@@ -76,4 +85,30 @@ h2 {
 
 .lista-productos li img:hover {
     border: solid 10px rgba(128, 1, 195, 1);
+}
+
+.lista-productos li p {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 10px 0 0 0;
+}
+
+.lista-productos li p span {
+    color: #ffce00;
+    font-size: 40px;
+}
+
+.boton {
+    background-color: #ffce00;
+    padding: 10px 40px;
+    margin-top: 10px;
+    display: inline-block;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color .3s ease-in;
+}
+
+.boton:hover {
+    background-color: #Ebbc00;
 }
