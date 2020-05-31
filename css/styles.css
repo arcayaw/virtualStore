@@ -1,6 +1,17 @@
+:root {
+    --fuentePrincipal: 'Staatliches', cursive;
+    /*custom propertie o variable de css*/
+
+    --primario: #9C27B0;
+    --primarioOscuro: #89119D;
+    --secundario: #FFCE00;
+}
+
 html {
-    height: 100%;
+    font-size: 62.5%;
     box-sizing: border-box;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 *,
@@ -10,105 +21,209 @@ html {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: black;
-    height: 100%;
-    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#feccb1+0,f17432+37,ea5507+67,fb955e+90 */
-    background: #feccb1;
-    /* Old browsers */
-    background: -moz-linear-gradient(top, #feccb1 0%, #f17432 37%, #ea5507 67%, #fb955e 90%);
-    /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, #feccb1 0%, #f17432 37%, #ea5507 67%, #fb955e 90%);
-    /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, #feccb1 0%, #f17432 37%, #ea5507 67%, #fb955e 90%);
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#feccb1', endColorstr='#fb955e', GradientType=0);
-    /* IE6-9 */
-    background-attachment: fixed;
+    background-color: var(--primario);
+    line-height: 2;
+    font-size: 2rem;
 }
 
-header {
+body.footer-fijo{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+body.footer-fijo main{
+    flex: 1;
+}
+
+h2 {
+    color: var(--secundario);
     text-align: center;
-    padding: 40px 0;
+    font-size: 4rem;
+    font-family: var(--fuentePrincipal);
+}
+
+.contenedor {
+    max-width: 1000px;
+    width: 95%;
+    margin: 0 auto;
 }
 
 img {
     max-width: 100%;
 }
 
-.contenedor {
-    max-width: 1200px;
-    margin: 0 auto;
+.header {
+    display: grid;
+    /*activo grid*/
+    justify-content: center;
+    padding: 3rem 0;
+    /*padding 3 arriba 0 abajo*/
 }
 
-.hero {
-    margin-bottom: 40px;
+.img {
+    display: grid;
+    max-width: 90%;
+    justify-content: center;
 }
 
-h2 {
+.barra {
+    background-color: var(--primarioOscuro);
+    padding: 1rem 0;
+    /*1 arriba a cero los lados */
+}
+
+.barra .nav {
+    display: grid;
+    /*activo grid*/
+    justify-content: center;
+    grid-template-columns: repeat(2, 200px);
+    /*genero las columnas, el 2 es la cantidad de elementos, y el 200px el tamanio que ocupan, pueden ser rems tambien, si dejas auto toman solo el tamanio que necesitan*/
+    grid-column-gap: 2rem;
+    /*espacio entre las columnas*/
+}
+
+.barra .nav a {
+    font-family: var(--fuentePrincipal);
+    font-size: 3rem;
     text-align: center;
-    text-transform: uppercase;
+    /*alinea dentro de su contenedor*/
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.barra .nav a:hover {
+    color: var(--secundario);
 }
 
 .lista-productos {
-    padding: 0;
-    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /*2 espacios de una fracion cada uno, divide el tamanio total entre el numero de elementos*/
+    column-gap: 2rem;
 }
 
-.lista-productos li {
-    float: left;
-    width: 50%;
-    padding: 20px;
+@media(min-width:768px) {
+    .lista-productos {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.producto {
+    background-color: var(--primarioOscuro);
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.contenido-producto p {
+    font-family: var(--fuentePrincipal);
+    color: aliceblue;
     text-align: center;
+    margin: 1rem 0;
+    line-height: 1.2;
 }
 
-.lista-productos li:nth-child(2n+1) {
-    clear: both;
+.contenido-producto .titulo {
+    font-size: 4rem;
 }
 
-@media (min-width:768px) {
-    .lista-productos li {
-        width: 33.3%;
+.contenido-producto .precio {
+    font-size: 2.8rem;
+    color: var(--secundario);
+}
+
+.grafico {
+    min-height: 300px;
+    margin-bottom: 2rem;
+    grid-column: 1/3;
+    background-size: cover;
+    background-position: center center;
+}
+
+.grafico-1 {
+    background-image: url(../img/grafico1.jpg);
+    grid-row: 2/3;
+
+}
+
+.grafico-2 {
+    background-image: url(../img/grafico2.jpg);
+    grid-row: 8/9;
+
+}
+
+@media(min-width:768px) {
+    .grafico-2 {
+        grid-row: 5/6;
+        grid-column: 2/4;
     }
-    .lista-productos li:nth-child(2n+1) {
-        clear: unset;
+}
+
+
+/*con este media query estamos haciendo que esta configuracion de un elemento al lado del otro solo se aplique cuando la pantalla sea mas grande de 768*/
+@media(min-width: 768px){
+    .contenedor-informacion{
+        display: grid;
+        grid-template-columns: 2fr 1fr;/*el repeat crea tamanios iguales. Con 2fr 1fr le indicamos que uno de los elementos sera el doble que el otro*/
+        grid-gap: 2rem;
     }
-    .lista-productos li:nth-child(3n+1) {
-        clear: both;
-    }
 }
 
-.lista-productos li img {
-    border: solid 10px rgba(128, 1, 195, .45);
-    transition: border-color .3s ease-out;
+.contenedor-informacion p {
+    font-family: var(--fuentePrincipal);
+    color: aliceblue;
+    text-align: center;
+    margin: 1rem 0;
+    line-height: 1.2;
+    text-align: justify;
+    
 }
 
-.lista-productos li img:hover {
-    border: solid 10px rgba(128, 1, 195, 1);
+.footer{/*el contenedor*/
+    background-color: var(--primarioOscuro);
+    padding: 1rem 0;
+    margin-top: 2rem;
 }
 
-.lista-productos li p {
-    font-size: 28px;
-    font-weight: bold;
-    margin: 10px 0 0 0;
+.copyright{/*el texto*/
+    font-family: var(--fuentePrincipal);
+    color: azure;
+font-size: 2.2rem;
+text-align: center;
 }
 
-.lista-productos li p span {
-    color: #ffce00;
-    font-size: 40px;
+.formulario-pedido{
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows:repeat(2, 6rem);
+    grid-gap: 1rem;
+
+   
 }
 
-.boton {
-    background-color: #ffce00;
-    padding: 10px 40px;
-    margin-top: 10px;
-    display: inline-block;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color .3s ease-in;
+.campo {
+    background-color: transparent;
+    border: 5px solid#ffffff;
+    font-family: var(--fuentePrincipal);
+    font-size: 2rem;
+    padding: 1rem;
+   
+    color: #ffffff;
 }
+.talla{
+    width: 16rem;
+    grid-column: 1/3;
+   
+}
+.boton{
+    background-color: var(--secundario);
+    font-size: 2rem;
+    font-family: var(--secundario);
+    transition: background-color .3s ease;
+    grid-column: 1/4;
+}
+.boton:hover{
+    cursor: pointer;
+    background-color: rgb(233, 187, 2) ;
 
-.boton:hover {
-    background-color: #Ebbc00;
 }
